@@ -1,0 +1,163 @@
+[
+  {
+    "id": "lead-001",
+    "name": "João Silva",
+    "company": "TechCorp Brasil",
+    "email": "joao.silva@techcorp.com.br",
+    "source": "Website",
+    "score": 85,
+    "status": "New",
+    "createdAt": "2024-01-15T10:30:00Z",
+    "lastActivity": "2024-01-15T10:30:00Z"
+  },
+  {
+    "id": "lead-002",
+    "name": "Maria Santos",
+    "company": "Inovação Digital",
+    "email": "maria@inovacaodigital.com",
+    "source": "LinkedIn",
+    "score": 92,
+    "status": "Contacted",
+    "createdAt": "2024-01-14T14:20:00Z",
+    "lastActivity": "2024-01-16T09:15:00Z"
+  },
+  {
+    "id": "lead-003",
+    "name": "Carlos Oliveira",
+    "company": "StartupXYZ",
+    "email": "carlos@startupxyz.io",
+    "source": "Cold Call",
+    "score": 78,
+    "status": "Qualified",
+    "createdAt": "2024-01-13T16:45:00Z",
+    "lastActivity": "2024-01-17T11:30:00Z"
+  },
+  {
+    "id": "lead-004",
+    "name": "Ana Costa",
+    "company": "Empresa ABC",
+    "email": "ana.costa@empresaabc.com",
+    "source": "Referral",
+    "score": 95,
+    "status": "New",
+    "createdAt": "2024-01-12T08:15:00Z"
+  },
+  {
+    "id": "lead-005",
+    "name": "Pedro Ferreira",
+    "company": "SoluTech",
+    "email": "pedro@solutech.net",
+    "source": "Email Campaign",
+    "score": 67,
+    "status": "Contacted",
+    "createdAt": "2024-01-11T13:20:00Z",
+    "lastActivity": "2024-01-15T16:45:00Z"
+  },
+  {
+    "id": "lead-006",
+    "name": "Lucia Rodrigues",
+    "company": "MegaCorp",
+    "email": "lucia.rodrigues@megacorp.com.br",
+    "source": "Trade Show",
+    "score": 88,
+    "status": "Qualified",
+    "createdAt": "2024-01-10T11:30:00Z",
+    "lastActivity": "2024-01-18T14:20:00Z"
+  },
+  {
+    "id": "lead-007",
+    "name": "Roberto Lima",
+    "company": "TechStart",
+    "email": "roberto@techstart.com",
+    "source": "Website",
+    "score": 73,
+    "status": "Unqualified",
+    "createdAt": "2024-01-09T15:45:00Z",
+    "lastActivity": "2024-01-12T10:15:00Z"
+  },
+  {
+    "id": "lead-008",
+    "name": "Fernanda Alves",
+    "company": "Digital Solutions",
+    "email": "fernanda@digitalsolutions.io",
+    "source": "LinkedIn",
+    "score": 91,
+    "status": "New",
+    "createdAt": "2024-01-08T09:10:00Z"
+  },
+  {
+    "id": "lead-009",
+    "name": "Marcos Pereira",
+    "company": "InnovaTech",
+    "email": "marcos.pereira@innovatech.com.br",
+    "source": "Cold Call",
+    "score": 82,
+    "status": "Contacted",
+    "createdAt": "2024-01-07T12:25:00Z",
+    "lastActivity": "2024-01-14T08:30:00Z"
+  },
+  {
+    "id": "lead-010",
+    "name": "Juliana Souza",
+    "company": "FutureTech",
+    "email": "juliana@futuretech.net",
+    "source": "Referral",
+    "score": 96,
+    "status": "Qualified",
+    "createdAt": "2024-01-06T14:40:00Z",
+    "lastActivity": "2024-01-16T15:20:00Z"
+  },
+  {
+    "id": "lead-011",
+    "name": "Ricardo Martins",
+    "company": "CloudTech",
+    "email": "ricardo@cloudtech.com",
+    "source": "Email Campaign",
+    "score": 69,
+    "status": "Lost",
+    "createdAt": "2024-01-05T10:15:00Z",
+    "lastActivity": "2024-01-10T13:45:00Z"
+  },
+  {
+    "id": "lead-012",
+    "name": "Camila Barbosa",
+    "company": "DataCorp",
+    "email": "camila@datacorp.io",
+    "source": "Trade Show",
+    "score": 87,
+    "status": "New",
+    "createdAt": "2024-01-04T16:30:00Z"
+  },
+  {
+    "id": "lead-013",
+    "name": "André Gomes",
+    "company": "SmartSys",
+    "email": "andre.gomes@smartsys.com.br",
+    "source": "Website",
+    "score": 75,
+    "status": "Contacted",
+    "createdAt": "2024-01-03T11:20:00Z",
+    "lastActivity": "2024-01-11T09:10:00Z"
+  },
+  {
+    "id": "lead-014",
+    "name": "Patricia Nunes",
+    "company": "TechFlow",
+    "email": "patricia@techflow.net",
+    "source": "LinkedIn",
+    "score": 93,
+    "status": "Qualified",
+    "createdAt": "2024-01-02T13:55:00Z",
+    "lastActivity": "2024-01-17T12:30:00Z"
+  },
+  {
+    "id": "lead-015",
+    "name": "Gabriel Santos",
+    "company": "NextGen",
+    "email": "gabriel@nextgen.io",
+    "source": "Cold Call",
+    "score": 81,
+    "status": "New",
+    "createdAt": "2024-01-01T08:45:00Z"
+  }
+]
