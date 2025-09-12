@@ -76,16 +76,8 @@ export function OpportunitiesList({
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between px-6 py-4">
-        <div>
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
-            Opportunities
-          </h2>
-          <p className="text-sm sm:text-base text-gray-600">
-            {opportunities.length} opportunities
-          </p>
-        </div>
-        <div className="flex items-center gap-4 sm:gap-6 text-sm">
+      <div className="flex items-center justify-center px-6 py-4">
+        <div className="flex items-center gap-6 sm:gap-8">
           <div className="text-center">
             <p className="text-lg sm:text-2xl font-bold text-green-600">
               {formatCurrency(getWonValue())}
