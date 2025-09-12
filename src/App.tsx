@@ -1,10 +1,23 @@
 import { useState } from "react";
 import { LeadsList } from "./components/LeadsList";
+import { LeadDetailPanel } from "./components/LeadDetailPanel";
+import { Toast } from "./components/ui/Toast";
+
+import { useToast } from "./hooks/useToast";
 import type { Lead } from "./types";
 
 function App() {
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [leads, setLeads] = useState<Lead[]>([]);
+  const { toast, showToast, hideToast } = useToast();
+
+  const handleLeadUpdate = (updatedLead: Lead) => {
+    setLeads((prevLeads) =>
+      prevLeads.map((lead) => (lead.id === updatedLead.id ? updatedLead : lead))
+    );
+    setSelectedLead(updatedLead);
+    showToast(`Lead ${updatedLead.name} atualizado com sucesso!`, "success");
+  };
 
   const handleLeadsLoad = (loadedLeads: Lead[]) => {
     setLeads(loadedLeads);
@@ -31,6 +44,20 @@ function App() {
           leads={leads}
         />
       </main>
+
+      <LeadDetailPanel
+        lead={selectedLead}
+        isOpen={!!selectedLead}
+        onClose={() => setSelectedLead(null)}
+        onLeadUpdate={handleLeadUpdate}
+      />
+
+      <Toast
+        message={toast.message}
+        type={toast.type}
+        isVisible={toast.isVisible}
+        onClose={hideToast}
+      />
     </div>
   );
 }
