@@ -300,30 +300,37 @@ export function LeadsList({
                 <div
                   key={lead.id}
                   onClick={() => onLeadSelect?.(lead)}
-                  className={`p-4 cursor-pointer hover:bg-gray-50 transition-colors ${
+                  className={`p-6 cursor-pointer hover:bg-gray-50 transition-colors ${
                     selectedLeadId === lead.id
                       ? "bg-primary-50 border-l-4 border-l-primary-500"
                       : ""
                   }`}
                 >
-                  <div className="flex items-start justify-between">
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <h3 className="font-medium text-gray-900 truncate">
+                  <div className="space-y-4">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0 flex-1">
+                        <h3 className="font-semibold text-lg text-gray-900 leading-tight">
                           {lead.name}
                         </h3>
-                        <Badge variant="score" value={lead.score} />
+                        <p className="text-base text-gray-600 mt-1">
+                          {lead.company}
+                        </p>
                       </div>
-                      <p className="text-sm text-gray-600 truncate mb-2">
-                        {lead.company}
-                      </p>
-                      <p className="text-sm text-gray-500 truncate mb-2">
+                      <Badge variant="score" value={lead.score} />
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="text-sm text-gray-700 break-all">
                         {lead.email}
                       </p>
-                      <div className="flex flex-wrap items-center gap-2">
-                        <Badge variant="status" value={lead.status} />
-                        <Badge variant="source" value={lead.source} />
-                      </div>
+                      <p className="text-xs text-gray-500">
+                        {formatDateTime(lead.createdAt)}
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-3 pt-2">
+                      <Badge variant="status" value={lead.status} />
+                      <Badge variant="source" value={lead.source} />
                     </div>
                   </div>
                 </div>
@@ -331,7 +338,7 @@ export function LeadsList({
             </div>
           </div>
 
-          <div className="hidden sm:block overflow-x-auto">
+          <div className="hidden sm:block overflow-x-auto h-[calc(100vh-380px)] overflow-y-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
