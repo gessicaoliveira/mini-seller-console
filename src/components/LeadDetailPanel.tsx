@@ -23,6 +23,7 @@ interface LeadDetailPanelProps {
   isOpen: boolean;
   onClose: () => void;
   onLeadUpdate: (updatedLead: Lead) => void;
+  onConvertLead: (lead: Lead) => void;
 }
 
 interface EditState {
@@ -35,6 +36,7 @@ export function LeadDetailPanel({
   isOpen,
   onClose,
   onLeadUpdate,
+  onConvertLead,
 }: LeadDetailPanelProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editState, setEditState] = useState<EditState>({
@@ -139,7 +141,7 @@ export function LeadDetailPanel({
   return (
     <>
       <div
-        className="fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300"
+        className="fixed inset-0 bg-black/50 z-40 transition-opacity duration-300"
         onClick={onClose}
       />
 
@@ -325,7 +327,10 @@ export function LeadDetailPanel({
 
           <div className="border-t border-gray-200 p-4 sm:p-6 space-y-3">
             {canConvert && !isEditing && (
-              <button className="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center justify-center gap-2">
+              <button
+                onClick={() => onConvertLead(lead)}
+                className="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
+              >
                 <TrendingUp className="w-4 h-4" />
                 Convert to Opportunity
               </button>
