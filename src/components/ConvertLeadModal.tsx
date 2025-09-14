@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { X, TrendingUp, DollarSign, Building, AlertCircle } from "lucide-react";
 import type { Lead, Opportunity, OpportunityStage } from "../types";
 import { LoadingSpinner } from "./ui/LoadingSpinner";
@@ -27,7 +27,7 @@ export function ConvertLeadModal({
 }: ConvertLeadModalProps) {
   const [form, setForm] = useState<ConversionForm>({
     name: "",
-    stage: "Prospecting",
+    stage: "" as OpportunityStage,
     amount: "",
     accountName: "",
   });
@@ -35,25 +35,28 @@ export function ConvertLeadModal({
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
-  // Reset form when modal opens/closes or lead changes
-  useState(() => {
+  useEffect(() => {
     if (lead && isOpen) {
       setForm({
-        name: `${lead.company} - ${lead.name} Opportunity`,
-        stage: "Prospecting",
+        name: lead.name,
+        stage: "" as OpportunityStage,
         amount: "",
         accountName: lead.company,
       });
       setError(null);
       setFieldErrors({});
     }
-  });
+  }, [lead, isOpen]);
 
   const validateForm = (): boolean => {
     const errors: Record<string, string> = {};
 
     if (!validateRequired(form.name)) {
       errors.name = "Opportunity name is required";
+    }
+
+    if (!validateRequired(form.stage)) {
+      errors.stage = "Stage is required";
     }
 
     if (!validateRequired(form.accountName)) {
@@ -84,6 +87,15 @@ export function ConvertLeadModal({
         accountName: form.accountName,
         leadId: lead.id,
       });
+
+      setForm({
+        name: "",
+        stage: "" as OpportunityStage,
+        amount: "",
+        accountName: "",
+      });
+      setError(null);
+      setFieldErrors({});
 
       onConvert(opportunity);
       onClose();
@@ -144,8 +156,10 @@ export function ConvertLeadModal({
                 type="text"
                 value={form.name}
                 onChange={(e) => updateForm("name", e.target.value)}
-                className={`input-field w-full ${
-                  fieldErrors.name ? "border-red-300 focus:ring-red-500" : ""
+                className={`input-field ${
+                  fieldErrors.name
+                    ? "border-red-300 focus-visible:ring-red-500"
+                    : ""
                 }`}
                 placeholder="Enter opportunity name"
               />
@@ -171,9 +185,9 @@ export function ConvertLeadModal({
                   type="text"
                   value={form.accountName}
                   onChange={(e) => updateForm("accountName", e.target.value)}
-                  className={`input-field w-full pl-10 ${
+                  className={`input-field pl-10 ${
                     fieldErrors.accountName
-                      ? "border-red-300 focus:ring-red-500"
+                      ? "border-red-300 focus-visible:ring-red-500"
                       : ""
                   }`}
                   placeholder="Enter account name"
@@ -198,8 +212,13 @@ export function ConvertLeadModal({
                 id="stage"
                 value={form.stage}
                 onChange={(e) => updateForm("stage", e.target.value)}
-                className="input-field w-full"
+                className={`select-field ${
+                  fieldErrors.stage
+                    ? "border-red-300 focus-visible:ring-red-500"
+                    : ""
+                }`}
               >
+                <option value="">Select stage</option>
                 <option value="Prospecting">Prospecting</option>
                 <option value="Qualification">Qualification</option>
                 <option value="Proposal">Proposal</option>
@@ -207,6 +226,12 @@ export function ConvertLeadModal({
                 <option value="Closed Won">Closed Won</option>
                 <option value="Closed Lost">Closed Lost</option>
               </select>
+              {fieldErrors.stage && (
+                <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
+                  <AlertCircle className="w-3 h-3" />
+                  {fieldErrors.stage}
+                </p>
+              )}
             </div>
 
             <div>
@@ -225,9 +250,9 @@ export function ConvertLeadModal({
                   step="0.01"
                   value={form.amount}
                   onChange={(e) => updateForm("amount", e.target.value)}
-                  className={`input-field w-full pl-10 ${
+                  className={`input-field pl-10 ${
                     fieldErrors.amount
-                      ? "border-red-300 focus:ring-red-500"
+                      ? "border-red-300 focus-visible:ring-red-500"
                       : ""
                   }`}
                   placeholder="0.00"
